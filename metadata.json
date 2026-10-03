@@ -1,0 +1,7 @@
+{
+  "name": "FlyHigh Imports & Exports",
+  "description": "Factory to Doorstep. End-to-end sourcing, supplier coordination, quality inspection, and international logistics connecting global businesses with China manufacturing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
