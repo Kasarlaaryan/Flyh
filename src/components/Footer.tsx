@@ -1,16 +1,26 @@
 import React from 'react';
 import { Phone, Mail, MessageSquare, MapPin, ArrowUp } from 'lucide-react';
 import { COMPANY_INFO } from '../data/content';
+import { SERVICE_PAGES_DATA } from '../data/servicePagesData';
 
 interface FooterProps {
   onQuoteClick: () => void;
   onWhatsAppClick: () => void;
+  onNavigateHome?: () => void;
+  onNavigateToService?: (slug: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onQuoteClick, onWhatsAppClick }) => {
+export const Footer: React.FC<FooterProps> = ({
+  onQuoteClick,
+  onWhatsAppClick,
+  onNavigateHome,
+  onNavigateToService,
+}) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const servicesList = Object.values(SERVICE_PAGES_DATA);
 
   return (
     <footer className="bg-[#0B1F33] text-white pt-16 pb-12 border-t border-slate-800">
@@ -48,69 +58,67 @@ export const Footer: React.FC<FooterProps> = ({ onQuoteClick, onWhatsAppClick })
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-300">
               <li>
-                <a href="#about" className="hover:text-[#2E8BCB] transition-colors">
-                  About
-                </a>
+                <button
+                  onClick={onNavigateHome}
+                  className="hover:text-[#2E8BCB] transition-colors focus:outline-none"
+                >
+                  About FlyHigh
+                </button>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2E8BCB] transition-colors">
-                  Services
-                </a>
+                <button
+                  onClick={onNavigateHome}
+                  className="hover:text-[#2E8BCB] transition-colors focus:outline-none"
+                >
+                  Services Overview
+                </button>
               </li>
               <li>
-                <a href="#products" className="hover:text-[#2E8BCB] transition-colors">
-                  Products
-                </a>
+                <button
+                  onClick={onNavigateHome}
+                  className="hover:text-[#2E8BCB] transition-colors focus:outline-none"
+                >
+                  Product Categories
+                </button>
               </li>
               <li>
-                <a href="#how-it-works" className="hover:text-[#2E8BCB] transition-colors">
+                <button
+                  onClick={onNavigateHome}
+                  className="hover:text-[#2E8BCB] transition-colors focus:outline-none"
+                >
                   How It Works
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#contact" className="hover:text-[#2E8BCB] transition-colors">
-                  Contact
-                </a>
+                <button
+                  onClick={onQuoteClick}
+                  className="hover:text-[#2E8BCB] transition-colors focus:outline-none"
+                >
+                  Contact &amp; RFQ
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Services Links (3 cols) */}
+          {/* Dedicated Services Pages Links (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Services
+              Sourcing Services (Pages)
             </h4>
-            <ul className="space-y-2.5 text-sm text-slate-300">
-              <li>
-                <a href="#services" className="hover:text-[#2E8BCB] transition-colors">
-                  Product Sourcing
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-[#2E8BCB] transition-colors">
-                  Supplier Coordination
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-[#2E8BCB] transition-colors">
-                  Quality Inspection
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-[#2E8BCB] transition-colors">
-                  Consolidation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-[#2E8BCB] transition-colors">
-                  Logistics &amp; Shipping
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-[#2E8BCB] transition-colors">
-                  Doorstep Delivery
-                </a>
-              </li>
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+              {servicesList.map((svc) => (
+                <li key={svc.slug}>
+                  <button
+                    onClick={() => onNavigateToService && onNavigateToService(svc.slug)}
+                    className="hover:text-[#2E8BCB] transition-colors text-left flex items-center justify-between w-full group py-0.5"
+                  >
+                    <span>{svc.name}</span>
+                    <span className="text-[10px] text-slate-500 group-hover:text-[#2E8BCB] transition-colors">
+                      {svc.number} →
+                    </span>
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 

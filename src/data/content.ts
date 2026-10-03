@@ -17,7 +17,7 @@ export const COMPANY_INFO = {
   email: 'sourcing@flyhighimports.com',
   whatsApp: '+919876543210',
   whatsAppDisplay: '+91 98765 43210',
-  address: 'Suite 602, Trade Tower, International Business Bay, Mumbai 400051',
+  address: 'Pillar No 1629, Sreshta Primus, 3rd Floor, Road No. 36, Jubilee Hills, Hyderabad, Telangana 500033',
   chinaHubAddress: 'Room 1408, Tianhe North Trade Center, Tianhe District, Guangzhou, China',
 };
 
