@@ -165,8 +165,7 @@ export const Footer: React.FC<FooterProps> = ({
             © {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved. Factory to Doorstep.
           </p>
 
-          <div className="flex items-center gap-6">
-            <span>International Trade Compliance Verified</span>
+          <div>
             <button
               onClick={scrollToTop}
               className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
